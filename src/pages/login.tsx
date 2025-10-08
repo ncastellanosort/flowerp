@@ -12,7 +12,11 @@ function Login() {
           <Input placeholder="empresa@inc.com" />
           <label className="text-gray-800 text-md px-4">Password</label>
           <Input placeholder="••••••••" />
-          <Button className="m-4">Sign in</Button>
+          <div className="m-4">
+            <Link to="/dashboard">
+              <Button>Sign in</Button>
+            </Link>
+          </div>
           <div className="flex flex-row">
           <label className="text-gray-800 text-md px-4 mb-2">Don’t have an account yet?
             <Link to="/signup" className="text-blue-500 font-bold hover:text-blue-900"> Sign up</Link>

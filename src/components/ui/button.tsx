@@ -7,7 +7,7 @@ interface Props {
 
 function Button({ children, onClick,  className="", type="button" }: Props) {
   return (
-     <button type={type} onClick={onClick} className={`py-3 px-8 bg-blue-500 text-white rounded hover:bg-blue-900 ${className}`}>{ children }</button>
+     <button type={type} onClick={onClick} className={`py-3 px-8 w-full bg-blue-500 text-white rounded hover:bg-blue-900 ${className}`}>{ children }</button>
   );
 }
 

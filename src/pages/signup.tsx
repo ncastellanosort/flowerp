@@ -14,7 +14,11 @@ function Signup() {
           <Input placeholder="••••••••" />
           <label className="text-gray-800 text-md px-4">Confirm password</label>
           <Input placeholder="••••••••" />
-          <Button className="m-4">Create an account</Button>
+          <div className="m-4">
+            <Link to="/login">
+              <Button>Create an account</Button>
+            </Link>
+          </div>
           <div className="flex flex-row">
           <label className="text-gray-800 text-md px-4 mb-2">Already have an account?
             <Link to="/login" className="text-blue-500 font-bold hover:text-blue-900"> Login here</Link>
