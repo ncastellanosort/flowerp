@@ -1,0 +1,29 @@
+import Input from "../components/ui/input";
+import { Link } from "react-router-dom";
+import Button from "../components/ui/button";
+
+function Signup() {
+    return (
+    <section className="w-full h-screen bg-gray-200 flex justify-center items-center">
+      <div className="bg-white w-1/3 rounded p-4 shadow-md">
+        <h2 className="text-gray-800 font-bold text-3xl p-4">Create an account</h2>
+        <div className="flex flex-col">
+          <label className="text-gray-800 text-md px-4">Your email</label>
+          <Input placeholder="empresa@inc.com" />
+          <label className="text-gray-800 text-md px-4">Password</label>
+          <Input placeholder="••••••••" />
+          <label className="text-gray-800 text-md px-4">Confirm password</label>
+          <Input placeholder="••••••••" />
+          <Button className="m-4">Create an account</Button>
+          <div className="flex flex-row">
+          <label className="text-gray-800 text-md px-4 mb-2">Already have an account?
+            <Link to="/login" className="text-blue-500 font-bold hover:text-blue-900"> Login here</Link>
+          </label>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+}
+export default Signup;
