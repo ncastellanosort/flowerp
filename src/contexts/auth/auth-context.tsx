@@ -3,5 +3,6 @@ import type { AuthContextType } from "./types";
 
 export const AuthContext = createContext<AuthContextType | null>({
   user: null,
-  setUser: () => {}
+  setUser: () => {},
+  loading: true
 });

@@ -45,6 +45,7 @@ function Login() {
     if (formData.email === validUser.email) {
       auth?.setUser(validUser);
       localStorage.setItem("auth-token", validUser.token);
+      localStorage.setItem("email-token", validUser.email);
       navigate("/dashboard", { replace: true })
       return;
     }
