@@ -1,11 +1,10 @@
-interface Props {
-  className?: string,
-  placeholder: string
-}
+import type { InputHTMLAttributes } from "react";
 
-function Input({ placeholder, className="" }: Props) {
+type InputProps = InputHTMLAttributes<HTMLInputElement>;
+
+function Input(props: InputProps) {
   return (
-     <input className={`bg-gray-100 m-4 h-10 p-2 rounded border border-gray-300 ${className}`} placeholder={ placeholder }></input>
+     <input {...props} className={`bg-gray-100 m-4 h-10 p-2 rounded border border-gray-300 ${props.className}`}></input>
   );
 }
 export default Input;

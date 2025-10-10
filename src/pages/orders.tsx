@@ -1,5 +1,5 @@
 function Orders() {
-  return <p>Products...</p>
+  return <p>orders...</p>
 }
 
 export default Orders;

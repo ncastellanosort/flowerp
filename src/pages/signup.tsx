@@ -28,6 +28,6 @@ function Signup() {
       </div>
     </section>
   );
-
 }
+
 export default Signup;

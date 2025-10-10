@@ -3,9 +3,9 @@ import Sidebar from "./sidebar";
 
 function Layout() {
   return(
-    <div>
+    <div className="flex h-screen">
       <Sidebar />
-      <main className="p-10 bg-gray-300">
+      <main className="flex-1 p-4 overflow-auto bg-gray-200">
         <Outlet />
       </main>
     </div>
