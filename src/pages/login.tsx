@@ -12,7 +12,7 @@ type Login = {
 
 function Login() {
   const navigate = useNavigate();
-  const { setUser } = useContext(AuthContext);
+  const auth = useContext(AuthContext);
   const [formData, setFormData] = useState<Login>(
     {
       email: "",
@@ -42,13 +42,14 @@ function Login() {
       token: "abc"
     }
 
-    if (validUser.email === "nico@gmail.com") {
-      setUser(validUser);
+    if (formData.email === validUser.email) {
+      auth?.setUser(validUser);
       localStorage.setItem("auth-token", validUser.token);
       navigate("/dashboard", { replace: true })
-      setFormData({email: formData.email, password: formData.email});
+      return;
     }
 
+    setFormData({email: formData.email, password: formData.password});
     navigate("/login", { replace: true });
     alert("usuario invalido, revise sus credenciales")
   }
