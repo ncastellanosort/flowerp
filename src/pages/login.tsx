@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/ui/button";
 import Input from "../components/ui/input";
-import { useState, useContext } from "react";
-import { AuthContext } from "../contexts/auth/auth-context";
-import type { UserData } from "../contexts/auth/types";
+import { useState } from "react";
+import { useLogin } from "../hooks/use-login";
 
 type Login = {
   email: string,
@@ -11,14 +10,13 @@ type Login = {
 }
 
 function Login() {
-  const navigate = useNavigate();
-  const auth = useContext(AuthContext);
   const [formData, setFormData] = useState<Login>(
     {
       email: "",
       password: ""
     }
   );
+  const { login } = useLogin();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -30,29 +28,7 @@ function Login() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-    if (!formData.email || !formData.password) {
-      alert("completar todos los campos");
-      return;
-    }
-
-    // llamar a api para ver si usuario esta activo
-    const validUser: UserData = {
-      email: "nico@gmail.com",
-      token: "abc"
-    }
-
-    if (formData.email === validUser.email) {
-      auth?.setUser(validUser);
-      localStorage.setItem("auth-token", validUser.token);
-      localStorage.setItem("email-token", validUser.email);
-      navigate("/dashboard", { replace: true })
-      return;
-    }
-
-    setFormData({email: formData.email, password: formData.password});
-    navigate("/login", { replace: true });
-    alert("usuario invalido, revise sus credenciales")
+    login(formData.email, formData.email)
   }
 
    return (
