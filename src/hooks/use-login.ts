@@ -15,6 +15,7 @@ export function useLogin() {
     }
 
     // llamar a api para ver si usuario esta activo
+    // mirar si el token es valido
     const validUser: UserData = {
       email: "nico@gmail.com",
       token: "abc"

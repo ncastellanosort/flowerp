@@ -5,7 +5,10 @@ import Button from "../components/ui/button";
 function Signup() {
     return (
     <section className="w-full h-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white w-1/3 rounded p-4 shadow-md">
+      <div className="bg-white w-[400px] rounded p-4 shadow-md">
+        <h4 className="text-gray-800 font-bold pt-2 text-center">
+          Shop Manager
+        </h4>
         <h2 className="text-gray-800 font-bold text-3xl p-4">Create an account</h2>
         <div className="flex flex-col">
           <label className="text-gray-800 text-md px-4">Your email</label>

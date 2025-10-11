@@ -33,7 +33,10 @@ function Login() {
 
    return (
     <section className="w-full h-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white w-1/3 rounded p-4 shadow-md">
+      <div className="bg-white w-[400px] rounded p-4 shadow-md">
+        <h4 className="text-gray-800 font-bold pt-2 text-center">
+          Shop Manager
+        </h4>
         <h2 className="text-gray-800 font-bold text-3xl p-4">
           Sign into your account
         </h2>
