@@ -20,7 +20,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         const res = await fetch('http://localhost:3000/auth/me', {
           method: 'GET',
           headers: {
-            auth_token: token,
+            Authorization: `Bearer ${token}`,
           },
         })
 

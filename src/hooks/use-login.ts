@@ -27,20 +27,19 @@ export function useLogin() {
       ),
     });
 
-    const token = res.headers.get('auth_token');
     const data = await res.json();
-    const { company } = data;
+    const { company, token } = data;
 
-    if (token !== null) {
+    if (token) {
       auth?.setCompany(company as Company);
-      localStorage.setItem("auth_token", token);
+      localStorage.setItem("auth_token", token as string);
       navigate("/dashboard", { replace: true })
       return;
     }
 
+    alert(error);
     navigate("/login", { replace: true });
     setError("usuario invalido, revise sus credenciales");
-    alert(error);
   }
 
   return { login, error }
