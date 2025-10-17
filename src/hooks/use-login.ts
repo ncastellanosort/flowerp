@@ -1,30 +1,39 @@
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth/auth-context";
-import type { UserData } from "../contexts/auth/types";
 import { useContext, useState } from "react";
+import type { Company } from "../contexts/auth/types";
 
 export function useLogin() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
 
-  function login(email: string, password: string) {
-    if (!email || !password) {
+  async function login(userEmail: string, userPassword: string) {
+    if (!userEmail || !userPassword) {
       alert("completar todos los campos");
       return;
     }
 
-    // llamar a api para ver si usuario esta activo
-    // mirar si el token es valido
-    const validUser: UserData = {
-      email: "nico@gmail.com",
-      token: "abc"
-    }
+    const res = await fetch("http://localhost:3000/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        {
+          email: userEmail,
+          password: userPassword
+        }
+      ),
+    });
 
-    if (email === validUser.email) {
-      auth?.setUser(validUser);
-      localStorage.setItem("auth-token", validUser.token);
-      localStorage.setItem("email-token", validUser.email);
+    const token = res.headers.get('auth_token');
+    const data = await res.json();
+    const { company } = data;
+
+    if (token !== null) {
+      auth?.setCompany(company as Company);
+      localStorage.setItem("auth_token", token);
       navigate("/dashboard", { replace: true })
       return;
     }

@@ -1,25 +1,45 @@
 import { useState, useEffect } from "react";
 import { AuthContext } from "./auth-context";
-import type { UserData } from "./types";
+import type { Company } from "./types";
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<UserData | null>(null);
+  const [company, setCompany] = useState<Company | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // para que si encuentra el token, cargue el usuario
   useEffect(() => {
-    const token = localStorage.getItem("auth-token");
-    const email = localStorage.getItem("email-token");
+    const token = localStorage.getItem("auth_token");
 
-    if (token && email) {
-      setUser({ email: email, token: token });
-    }
+    const fetchCompany = async () => {
+      if (!token) {
+        setCompany(null);
+        setLoading(false);
+        return;
+      }
 
-    setLoading(false);
+      try {
+        const res = await fetch('http://localhost:3000/auth/me', {
+          method: 'GET',
+          headers: {
+            auth_token: token,
+          },
+        })
+
+        const data = await res.json();
+        const { company } = data;
+        setCompany(company as Company);
+      } catch (error) {
+         console.log(error);
+         setCompany(null);
+      } finally {
+         setLoading(false);
+      }
+    };
+
+    fetchCompany();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ company, setCompany, loading }}>
     { children }
     </AuthContext.Provider>
   );

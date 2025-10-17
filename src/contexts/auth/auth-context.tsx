@@ -2,7 +2,7 @@ import { createContext } from "react";
 import type { AuthContextType } from "./types";
 
 export const AuthContext = createContext<AuthContextType | null>({
-  user: null,
-  setUser: () => {},
+  company: null,
+  setCompany: () => {},
   loading: true
 });

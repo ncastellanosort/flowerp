@@ -8,9 +8,8 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    localStorage.removeItem("auth-token");
-    localStorage.removeItem("email-token");
-    auth?.setUser(null);
+    localStorage.removeItem("auth_token");
+    auth?.setCompany(null);
     navigate("/login", { replace: true });
   }
 
