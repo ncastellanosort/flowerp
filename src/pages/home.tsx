@@ -1,28 +1,60 @@
 import { Link } from "react-router-dom";
-import Button from "../components/ui/button";
+import { Store } from "lucide-react";
 
 function Home() {
   return (
-    <section className="bg-white w-full h-screen flex items-center justify-center">
-      <div className="py-8 px-4 max-w-screen-xl text-center">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
-              Shop Manager
+    <>
+    <nav className="fixed top-0 w-full h-16 border-b border-neutral-800 flex justify-center">
+      <div className="max-w-screen-xl w-full flex items-center justify-between px-14">
+        <div className="flex items-center gap-2">
+          <Store className="text-orange-500" />
+          <p className="text-neutral-100 text-2xl font-bold">Shop Manager</p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button className="cursor-pointer font-medium py-1 px-4 text-neutral-100 rounded-md bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 transition duration-150">
+            Login
+          </button>
+          <button className="cursor-pointer font-medium py-1 px-4 text-neutral-900 rounded-md bg-orange-500 border border-orange-600 hover:bg-neutral-950 hover:text-neutral-100 hover:border hover:border-neutral-800 transition duration-150">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section className="w-full h-screen flex items-center justify-center">
+      <div className="py-8 px-4 max-w-screen-lg text-center">
+          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-neutral-100 md:text-5xl lg:text-6xl">
+          El poder de tu eCommerce
           </h1>
-          <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
+          <h2 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-orange-500 md:text-5xl lg:text-6xl">Simplificado</h2>
+          <p className="mb-8 text-lg font-normal text-neutral-100 lg:text-xl sm:px-16 lg:px-48">
           Tu centro de control para e-commerce: gestiona productos, pedidos y clientes con una interfaz simple, eficiente y moderna.
           </p>
-          <div className="flex flex-row w-24 justify-center items-center m-auto">
+          <div className="w-full flex flex-row justify-center items-center">
             <Link to="/signup" className="mr-4">
-                <Button className="border border-blue-500">
-                Start
-                </Button>
-            </Link>
-            <Link to="/login" className="ml-4">
-              <button className="border border-gray-200 rounded py-3 px-8 w-full hover:bg-gray-300">Login</button>
+                <button className="
+               py-3 px-8 w-full
+               text-neutral-900
+               font-bold
+               rounded-md
+               bg-orange-500
+               border border-orange-600
+               hover:bg-neutral-950
+               hover:text-neutral-100
+               hover:border
+               hover:border-neutral-800
+               animation
+               duration-150
+               cursor-pointer
+                ">
+                Empieza tu gestión
+                </button>
             </Link>
           </div>
       </div>
     </section>
+    </>
   );
 }
 
