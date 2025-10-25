@@ -1,6 +1,5 @@
 import Input from "../components/ui/input";
 import { Link } from "react-router-dom";
-import Button from "../components/ui/button";
 import { Store } from "lucide-react";
 
 function Signup() {

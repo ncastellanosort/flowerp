@@ -13,6 +13,8 @@ function Sidebar() {
     navigate("/login", { replace: true });
   }
 
+  // hacer el boton de logout para ver el perfil como un dropdown menu
+
   return (
     <aside className="w-64 h-screen border-r border-r-neutral-800 text-white p-4 flex flex-col justify-between">
       <div>
