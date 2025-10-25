@@ -6,6 +6,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const [company, setCompany] = useState<Company | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [userToken, setToken] = useState<string | null>(null);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("auth_token");
@@ -15,6 +16,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         setCompany(null);
         setToken(null);
         setLoading(false);
+        setInitialized(true);
         return;
       }
       
@@ -28,18 +30,18 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
           },
         })
 
-        if (!res.ok) throw new Error('invalid or expired token');
+        if (!res.ok) throw new Error('err fetching auth/me');
 
         const data = await res.json();
         const { company } = data;
         setCompany(company as Company);
       } catch (error) {
-         console.log(error);
          setCompany(null);
          setToken(null);
-         localStorage.removeItem('auth_token');
+         throw new Error(`error ${error}`);
       } finally {
          setLoading(false);
+         setInitialized(true);
       }
     };
 
@@ -47,12 +49,14 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!initialized) return;
+
     if (userToken) {
       localStorage.setItem('auth_token', userToken);
     } else {
       localStorage.removeItem('auth_token');
     }
-  }, [userToken]);
+  }, [userToken, initialized]);
 
   return (
     <AuthContext.Provider value={{ company, setCompany, loading, token: userToken, setToken }}>
