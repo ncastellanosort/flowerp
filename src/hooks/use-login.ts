@@ -32,6 +32,7 @@ export function useLogin() {
 
     if (token) {
       auth?.setCompany(company as Company);
+      auth?.setToken(token);
       localStorage.setItem("auth_token", token as string);
       navigate("/dashboard", { replace: true })
       return;

@@ -18,6 +18,8 @@ export type Company = {
 
 export type AuthContextType = {
   company: Company | null,
-  setCompany: (company: Company | null) => void ,
-  loading: boolean
+  setCompany: (company: Company | null) => void,
+  loading: boolean,
+  token: string | null,
+  setToken: (token: string | null) => void,
 }

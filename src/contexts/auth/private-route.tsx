@@ -9,7 +9,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
     return <div>Cargando usuario...</div>
   }
 
-  if (!auth?.company) {
+  if (!auth?.token) {
     return <Navigate to="/login" replace />
   }
 

@@ -3,6 +3,7 @@ import Button from "../components/ui/button";
 import Input from "../components/ui/input";
 import { useState } from "react";
 import { useLogin } from "../hooks/use-login";
+import { Store } from "lucide-react";
 
 type Login = {
   email: string,
@@ -32,30 +33,28 @@ function Login() {
   }
 
    return (
-    <section className="w-full h-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white w-[400px] rounded p-4 shadow-md">
-        <h4 className="text-gray-800 font-bold pt-2 text-center">
+    <section className="w-full h-screen flex justify-center items-center">
+      <div className="w-[400px] p-4">
+        <Store className="text-white mx-auto mb-2"/>
+        <h4 className="text-neutral-100 font-bold pt-2 text-center">
           Shop Manager
         </h4>
-        <h2 className="text-gray-800 font-bold text-3xl p-4">
-          Sign into your account
+        <h2 className="text-neutral-100 text-center font-bold text-3xl p-4">
+          Log in to your Shop
         </h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
-          <label className="text-gray-800 text-md px-4">Email</label>
           <Input
             type="email"
             name="email"
             value={formData.email}
-            placeholder="empresa@inc.com"
+            placeholder="Email Address"
             onChange={handleChange}
           />
-
-          <label className="text-gray-800 text-md px-4">Password</label>
           <Input
             type="password"
             name="password"
             value={formData.password}
-            placeholder="••••••••"
+            placeholder="Password"
             onChange={handleChange}
           />
 
@@ -63,15 +62,15 @@ function Login() {
             <Button type="submit">Sign in</Button>
           </div>
 
-          <div className="flex flex-row">
-            <label className="text-gray-800 text-md px-4 mb-2">
-              Don’t have an account yet?
+          <div className="flex flex-row justify-center">
+            <label className="text-neutral-100 text-md px-4 py-2">
+              Don’t have an account?
               <Link
                 to="/signup"
-                className="text-blue-500 font-bold hover:text-blue-900"
+                className="text-center text-blue-500 hover:underline"
               >
                 {" "}
-                Sign up
+              Sign up
               </Link>
             </label>
           </div>
