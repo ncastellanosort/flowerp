@@ -35,7 +35,7 @@ function Login() {
    return (
     <section className="w-full h-screen flex justify-center items-center">
       <div className="w-[400px] p-4">
-        <Store className="text-white mx-auto mb-2"/>
+        <Store className="text-orange-500 mx-auto mb-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
           Shop Manager
         </h4>
@@ -59,7 +59,24 @@ function Login() {
           />
 
           <div className="m-4">
-            <Button type="submit">Sign in</Button>
+          <button className="
+               py-3 px-8 
+               w-full
+               text-neutral-900
+               font-bold
+               rounded-md
+               bg-orange-500
+               border border-orange-600
+               hover:bg-neutral-950
+               hover:text-neutral-100
+               hover:border
+               hover:border-neutral-800
+               animation
+               duration-150
+               cursor-pointer
+                ">
+                Sign in
+            </button>
           </div>
 
           <div className="flex flex-row justify-center">

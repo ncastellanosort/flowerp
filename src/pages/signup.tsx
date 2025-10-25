@@ -7,7 +7,7 @@ function Signup() {
     return (
     <section className="w-full h-screen flex justify-center items-center">
       <div className="w-[400px] p-4">
-        <Store className="text-white mx-auto mb-2"/>
+        <Store className="text-orange-500 mx-auto mb-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
           Shop Manager
         </h4>
@@ -16,14 +16,27 @@ function Signup() {
           <Input placeholder="Email Address" />
           <Input placeholder="Password" />
           <Input placeholder="Confirm Password" />
-          <div className="m-4">
-            <Link to="/login">
-              <Button>Create an account</Button>
-            </Link>
-          </div>
+          <button className="
+               m-4
+               py-3 px-8 
+               text-neutral-900
+               font-bold
+               rounded-md
+               bg-orange-500
+               border border-orange-600
+               hover:bg-neutral-950
+               hover:text-neutral-100
+               hover:border
+               hover:border-neutral-800
+               animation
+               duration-150
+               cursor-pointer
+                ">
+                Start your management
+            </button>
           <div className="flex flex-row justify-center">
             <label className="text-neutral-100 text-md px-4 py-2">Already have an account?
-              <Link to="/login" className="text-blue-500 hover:underline"> Login here</Link>
+              <Link to="/login" className="text-blue-500 hover:underline"> Login</Link>
             </label>
           </div>
         </div>
