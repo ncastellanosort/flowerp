@@ -1,20 +1,70 @@
 import Input from "../components/ui/input";
 import { Link } from "react-router-dom";
-import { Store } from "lucide-react";
+import { Store, UserRound } from "lucide-react";
+import { useState } from "react";
+import type { SignUp } from "../types/signup";
+import { useRegister } from "../hooks/use-register";
 
 function Signup() {
+  const [formData, setFormData] = useState<SignUp>({
+    taxId: 0,
+    name: "",
+    address: "",
+    contact: "",
+    email: "",
+    password: "",
+    confirmedPassword: "",
+  });
+
+  const { register } = useRegister();
+
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmedPassword) {
+       alert("Passwords do not match");
+       return;
+    }
+
+    if (!formData.email || !formData.name || !formData.taxId) {
+       alert("Please fill all required fields");
+       return;
+    }
+
+    register(formData);
+  };
+
     return (
     <section className="w-full h-screen flex justify-center items-center">
-      <div className="w-[400px] p-4">
+      <form className="w-[800px] p-4" onSubmit={handleSubmit}>
         <Store className="text-orange-500 mx-auto mb-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
           Shop Manager
         </h4>
         <h2 className="text-neutral-100 text-center font-bold text-3xl p-4">Create an account</h2>
-        <div className="flex flex-col">
-          <Input placeholder="Email Address" />
-          <Input placeholder="Password" />
-          <Input placeholder="Confirm Password" />
+        <div>
+          <p className="mx-4 text-neutral-200">Profile image</p>
+          <UserRound className="text-neutral-200"/>
+          <Input type="file"></Input>
+        </div>
+        <div className="grid grid-cols-2">
+          <Input name="taxId" placeholder="Tax ID" type="number" value={formData.taxId} onChange={handleChange}/>
+          <Input name="name" placeholder="Name" type="text" value={formData.name} onChange={handleChange}/>
+          <Input name="address" placeholder="Address" type="text" value={formData.address} onChange={handleChange}/>
+          <Input name="contact" placeholder="Contact" type="tel" value={formData.contact} onChange={handleChange}/>
+          <Input name="email" placeholder="Email Address" type="email" value={formData.email} onChange={handleChange}/>
+          <Input name="password" placeholder="Password" type="password" value={formData.password} onChange={handleChange}/>
+          <Input name="confirmedPassword" placeholder="Confirm Password" type="password" value={formData.confirmedPassword} onChange={handleChange}/>
+        </div>
+        <div className="flex flex-col items-center justify-center">
           <button className="
                m-4
                py-3 px-8 
@@ -38,8 +88,8 @@ function Signup() {
               <Link to="/login" className="text-blue-500 hover:underline"> Login</Link>
             </label>
           </div>
-        </div>
-      </div>
+          </div>
+      </form>
     </section>
   );
 }

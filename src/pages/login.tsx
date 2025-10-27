@@ -3,11 +3,7 @@ import Input from "../components/ui/input";
 import { useState } from "react";
 import { useLogin } from "../hooks/use-login";
 import { Store } from "lucide-react";
-
-type Login = {
-  email: string,
-  password: string
-}
+import type { Login } from "../types/login";
 
 function Login() {
   const [formData, setFormData] = useState<Login>(
