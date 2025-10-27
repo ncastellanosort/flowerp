@@ -4,66 +4,47 @@ import type { Company } from "./types";
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const [company, setCompany] = useState<Company | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [userToken, setToken] = useState<string | null>(null);
-  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("auth_token");
+    async function initAuth() {
+      const token = localStorage.getItem("auth_token");
 
-    const fetchCompany = async () => {
       if (!token) {
-        setCompany(null);
-        setToken(null);
         setLoading(false);
-        setInitialized(true);
         return;
       }
-      
-      setToken(token);
 
       try {
-        const res = await fetch('http://localhost:3000/auth/me', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const res = await fetch("http://localhost:3000/auth/me", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
 
-        if (!res.ok) throw new Error('err fetching auth/me');
-
+        if (!res.ok) throw new Error("invalid or expired token");
         const data = await res.json();
+
         setCompany(data.company as Company);
+        setToken(token);
       } catch (error) {
-         console.error(error);
-         setCompany(null);
-         setToken(null);
-         throw new Error(`error ${error}`);
+        console.error(error);
+        localStorage.removeItem("auth_token");
+        setCompany(null);
+        setToken(null);
       } finally {
-         setLoading(false);
-         setInitialized(true);
+        setLoading(false);
       }
-    };
-
-    fetchCompany();
-  }, []);
-
-  useEffect(() => {
-    if (!initialized) return;
-
-    if (userToken) {
-      localStorage.setItem('auth_token', userToken);
-    } else {
-      localStorage.removeItem('auth_token');
     }
-  }, [userToken, initialized]);
+
+    initAuth();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ company, setCompany, loading, token: userToken, setToken }}>
-    { children }
+      {children}
     </AuthContext.Provider>
   );
-
 }
 
 export default AuthProvider;
+

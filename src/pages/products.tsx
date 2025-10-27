@@ -42,7 +42,7 @@ function Products() {
   return (
     <>
       {products?.map((product) => (
-        <p>{product.name}</p>
+        <p key={product.id}>{product.name}</p>
       ))}
     </>
   );
