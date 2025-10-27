@@ -43,9 +43,9 @@ function Signup() {
   };
 
     return (
-    <section className="w-full h-screen flex justify-center items-center">
+    <section className="w-full flex justify-center items-center">
       <form className="w-[800px] p-4" onSubmit={handleSubmit}>
-        <Store className="text-orange-500 mx-auto mb-2"/>
+        <Store className="text-orange-500 mx-auto my-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
           Shop Manager
         </h4>
