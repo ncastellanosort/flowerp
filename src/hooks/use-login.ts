@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/auth/auth-context";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { Company } from "../contexts/auth/types";
 
 export function useLogin() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    localStorage.removeItem('auth_token');
+  }, []);
 
   async function login(userEmail: string, userPassword: string) {
     if (!userEmail || !userPassword) {

@@ -33,9 +33,9 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         if (!res.ok) throw new Error('err fetching auth/me');
 
         const data = await res.json();
-        const { company } = data;
-        setCompany(company as Company);
+        setCompany(data.company as Company);
       } catch (error) {
+         console.error(error);
          setCompany(null);
          setToken(null);
          throw new Error(`error ${error}`);
