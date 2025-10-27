@@ -12,12 +12,12 @@ function Home() {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="cursor-pointer font-medium py-1 px-4 text-neutral-100 rounded-md bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 transition duration-150">
+          <Link to="/login" className="cursor-pointer font-medium py-1 px-4 text-neutral-100 rounded-md bg-neutral-950 hover:bg-neutral-900 border border-neutral-800 transition duration-150">
             Login
-          </button>
-          <button className="cursor-pointer font-medium py-1 px-4 text-neutral-900 rounded-md bg-orange-500 border border-orange-600 hover:bg-neutral-950 hover:text-neutral-100 hover:border hover:border-neutral-800 transition duration-150">
+          </Link>
+          <Link to="/signup" className="cursor-pointer font-medium py-1 px-4 text-neutral-900 rounded-md bg-orange-500 border border-orange-600 hover:bg-neutral-950 hover:text-neutral-100 hover:border hover:border-neutral-800 transition duration-150">
             Sign Up
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
