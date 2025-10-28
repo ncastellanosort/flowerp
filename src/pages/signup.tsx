@@ -1,6 +1,6 @@
 import Input from "../components/ui/input";
 import { Link } from "react-router-dom";
-import { Store, UserRound } from "lucide-react";
+import { Building2, UserRound } from "lucide-react";
 import { useState } from "react";
 import type { SignUp } from "../types/signup";
 import { useRegister } from "../hooks/use-register";
@@ -45,9 +45,9 @@ function Signup() {
     return (
     <section className="w-full flex justify-center items-center">
       <form className="w-[800px] p-4" onSubmit={handleSubmit}>
-        <Store className="text-orange-500 mx-auto my-2"/>
+        <Building2 className="text-orange-500 mx-auto my-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
-          Shop Manager
+        FlowERP
         </h4>
         <h2 className="text-neutral-100 text-center font-bold text-3xl p-4">Create an account</h2>
         <div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Store } from "lucide-react";
+import { Building2 } from "lucide-react";
 
 function Home() {
   return (
@@ -7,8 +7,8 @@ function Home() {
     <nav className="fixed top-0 w-full h-16 border-b border-neutral-800 flex justify-center">
       <div className="max-w-screen-xl w-full flex items-center justify-between px-14">
         <div className="flex items-center gap-2">
-          <Store className="text-orange-500" />
-          <p className="text-neutral-100 text-2xl font-bold">Shop Manager</p>
+          <Building2 className="text-orange-500" />
+          <p className="text-neutral-100 text-2xl font-bold">FlowERP</p>
         </div>
 
         <div className="flex items-center gap-3">
@@ -25,11 +25,11 @@ function Home() {
     <section className="w-full h-screen flex items-center justify-center">
       <div className="py-8 px-4 max-w-screen-lg text-center">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-neutral-100 md:text-5xl lg:text-6xl">
-          El poder de tu eCommerce
+          Tu empresa
           </h1>
-          <h2 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-orange-500 md:text-5xl lg:text-6xl">Simplificado</h2>
+          <h2 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-orange-500 md:text-5xl lg:text-6xl">Siempre en control</h2>
           <p className="mb-8 text-lg font-normal text-neutral-100 lg:text-xl sm:px-16 lg:px-48">
-          Tu centro de control para e-commerce: gestiona productos, pedidos y clientes con una interfaz simple, eficiente y moderna.
+          FlowERP es un sistema integral de gestión empresarial que centraliza tus procesos administrativos, financieros y operativos, facilitando la toma de decisiones y optimizando la productividad de tu empresa.
           </p>
           <div className="w-full flex flex-row justify-center items-center">
             <Link to="/signup" className="mr-4">

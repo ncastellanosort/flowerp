@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Input from "../components/ui/input";
 import { useState } from "react";
 import { useLogin } from "../hooks/use-login";
-import { Store } from "lucide-react";
+import { Building2 } from "lucide-react";
 import type { Login } from "../types/login";
 
 function Login() {
@@ -30,12 +30,12 @@ function Login() {
    return (
     <section className="w-full h-screen flex justify-center items-center">
       <div className="w-[400px] p-4">
-        <Store className="text-orange-500 mx-auto mb-2"/>
+        <Building2 className="text-orange-500 mx-auto mb-2"/>
         <h4 className="text-neutral-100 font-bold pt-2 text-center">
-          Shop Manager
+        FlowERP
         </h4>
         <h2 className="text-neutral-100 text-center font-bold text-3xl p-4">
-          Log in to your Shop
+          Log in to your Business
         </h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <Input
